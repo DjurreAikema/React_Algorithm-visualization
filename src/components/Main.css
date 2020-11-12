@@ -1,0 +1,28 @@
+.main {
+  flex: 0.7;
+  flex-grow: 1;
+  /* overflow-y: scroll; */
+  padding-bottom: 150px;
+}
+
+.main__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+.main__headerRight > p {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.main__body {
+  min-height: 95%;
+}
+
+.main__footer {
+  border-radius: 20px;
+}
