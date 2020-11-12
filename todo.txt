@@ -1,0 +1,8 @@
+Move application to a nicer css format  (slack/standard format)
+make grid based on screen size
+re-generate grip propperly
+add more pathfinding algorithms
+make the colors nicer
+
+a*
+    make diagonal optional
