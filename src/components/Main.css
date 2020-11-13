@@ -26,3 +26,12 @@
 .main__footer {
   border-radius: 20px;
 }
+
+.grid {
+  max-width: 80%;
+  margin: auto;
+}
+
+.grid__col {
+  display: flex;
+}
