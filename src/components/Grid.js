@@ -25,10 +25,6 @@ export default function Grid() {
         initializeGrid()
     }, [])
 
-    // useEffect(() => {
-    //     visualizeAlgorithm()
-    // }, [VisitedNodes, ShortestPath])
-
     //Make the initial grid
     const initializeGrid = () => {
         const grid = new Array(rows)
@@ -195,6 +191,11 @@ export default function Grid() {
                 <button onClick={visualizeAlgorithm}>Vizualize Algorithm</button>
                 <button onClick={generateGrid}>Generate New Grid</button>
                 <button onClick={clearGrid}>Clear Grid</button>
+                <input 
+                    type="checkbox" 
+                    value={Diagonals}
+                    onClick={() => {setDiagonals(!Diagonals)}}
+                />
             </div>
     </div>
     )

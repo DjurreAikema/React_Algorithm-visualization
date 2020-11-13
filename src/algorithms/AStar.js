@@ -71,16 +71,16 @@ function Astar(grid, startNode, endNode, diagonals) {
         const neighbors = [];
         const { row, col } = node;
 
-        if (row > 0) neighbors.push(grid[row - 1][col]);
-        if (row < grid.length - 1) neighbors.push(grid[row + 1][col]);
-        if (col > 0) neighbors.push(grid[row][col - 1]);
-        if (col < grid[row].length - 1) neighbors.push(grid[row][col + 1]);
+        if (row > 0) neighbors.push(grid[row - 1][col]);                                                    //Bot
+        if (row < grid.length - 1) neighbors.push(grid[row + 1][col]);                                      //Top
+        if (col > 0) neighbors.push(grid[row][col - 1]);                                                    //Left
+        if (col < grid[row].length - 1) neighbors.push(grid[row][col + 1]);                                 //Right
 
         if(diagonals) {
-            if(row > 0 && col > 0) neighbors.push(grid[row - 1][col - 1])
-            if(col < grid[row].length - 1 && row > 0) neighbors.push(grid[row - 1][col + 1])
-            if(col > 0 && grid.length - 1) neighbors.push(grid[row + 1][col - 1])
-            if(col < grid[row].length - 1 && row < grid.length - 1) neighbors.push(grid[row + 1][col + 1])
+            if(row > 0 && col > 0) neighbors.push(grid[row - 1][col - 1])                                   //Top left
+            if(col < grid[row].length - 1 && row > 0) neighbors.push(grid[row - 1][col + 1])                //Top right
+            if(col > 0 && row < grid.length - 1) neighbors.push(grid[row + 1][col - 1])                     //Bot left
+            if(col < grid[row].length - 1 && row < grid.length - 1) neighbors.push(grid[row + 1][col + 1])  //Bot right
         }
 
         return neighbors.filter(neighbor => !closedSet.includes(neighbor));
