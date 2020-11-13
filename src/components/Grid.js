@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import aStar from '../aStarAlgorithm/AStar2'
-import Node from './Node2'
-import "./Main.css";
+import aStar from '../algorithms/AStar'
+import Node from './Node'
+import "./Grid.css";
 
 //Set the default values for grid generation
 const rows = 15
@@ -88,7 +88,6 @@ export default function Grid() {
 
     //Run the A* algorithm
     const runAlgorithm = () => { 
-        console.log("run")
         const startNode  = Grid[NODE_START_ROW][NODE_START_COL]
         const endNode = Grid[NODE_END_ROW][NODE_END_COL]
         startNode.wall = false
@@ -103,9 +102,6 @@ export default function Grid() {
 
     //Visualize the algorithm
     const animateAlgorithm = (path) => {
-        console.log("vis")
-        console.log(path.visitedNodes)
-        console.log(path.path)
         for(let i = 0; i <= path.visitedNodes.length; i++) {
             if(i === path.visitedNodes.length) {
                 setTimeout(() => {
@@ -134,12 +130,14 @@ export default function Grid() {
     }
 
     const visualizeAlgorithm = () => {
+        clearGrid()
         let path = runAlgorithm()
         animateAlgorithm(path)
     }
 
     //Generate new grid
     const generateGrid = () => {
+        clearGrid()
         setGrid([])
         initializeGrid()
     }

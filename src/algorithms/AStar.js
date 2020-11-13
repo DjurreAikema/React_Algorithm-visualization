@@ -38,7 +38,6 @@ function Astar(grid, startNode, endNode, diagonals) {
         //get the neighbors of the current Node
         let neighbors = getUnvisitedNeighbors(current, grid)
 
-
         //Loop over the neighbors of the current node
         for(let i = 0; i < neighbors.length; i++) {
             let neighbor = neighbors[i]
