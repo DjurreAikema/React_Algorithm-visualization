@@ -30,6 +30,7 @@ function Astar(startNode, endNode) {
         openSet = openSet.filter((elt) => elt !== current)
 
         let neighbours = current.neighbours
+        console.log(neighbours)
         for(let i = 0; i < neighbours.length; i++) {
             let neighbour = neighbours[i]
             if(!closedSet.includes(neighbour) && !neighbour.wall) {

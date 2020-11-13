@@ -3,8 +3,8 @@ import "./Main.css";
 import Node from './Node'
 import Astar from '../aStarAlgorithm/AStar'
 
-const cols = 20
-const rows = 35
+const cols = 5
+const rows = 5
 
 const NODE_START_ROW = 0
 const NODE_START_COL = 0
@@ -15,6 +15,7 @@ function Main() {
     const [Grid, setGrid] = useState([])
     const [Path, setPath] = useState([])
     const [VisitedNodes, setVisitedNodes] = useState([])
+    const [mouseDown, setMouseDown] = useState(false)
 
     //Inizialize grid into the DOM
     useEffect(() => {
@@ -100,6 +101,12 @@ function Main() {
                                     wall={wall}
                                     row={rowIndex} 
                                     col={colIndex}
+                                    mouseDown={mouseDown}
+                                    onMouseDown={(row, col) => handleMouseDown(row, col)}
+                                    onMouseEnter={(row, col) =>
+                                        handleMouseEnter(row, col)
+                                    }
+                                    onMouseUp={() => handleMouseUp()}
                                 />)
                         })}
                     </div>
@@ -127,6 +134,7 @@ function Main() {
                 if(i !== 0 && i !== VisitedNodes.length-1){
                     setTimeout(() => {
                         const node = VisitedNodes[i]
+                        console.log(node)
                         document.getElementById(`node-${node.row}-${node.col}`).className = "node node__visited"
                     }, 5 * i)
                 }
@@ -156,7 +164,7 @@ function Main() {
         initializeGrid()
     }
 
-    const runAlgorithm = () => {
+    const runAlgorithm = () => { 
         let path = Astar(Grid[NODE_START_COL][NODE_START_ROW], Grid[NODE_END_COL][NODE_END_ROW])
         setPath(path.path);
         setVisitedNodes(path.visitedNodes)
@@ -164,13 +172,35 @@ function Main() {
         visualizePath()
     }
 
-    const testFunct = () => {
-        if(Grid[2][2].wall) {
-            Grid[2][2].wall = false
-        } else {
-            Grid[2][2].wall = true
-        }
-        console.log(":(")
+    const handleMouseDown = (row, col) => {
+        const newGrid = getNewGridWithWallToggled(Grid, row, col);
+        setGrid(newGrid)
+        setMouseDown(true)
+    }
+
+    const handleMouseEnter = (row, col) => {
+        if (!mouseDown) return;
+        const newGrid = getNewGridWithWallToggled(Grid, row, col);
+        setGrid(newGrid)
+    }
+
+    const handleMouseUp = () => {
+        setMouseDown(false)
+    }
+
+    const getNewGridWithWallToggled = (grid, row, col) => {
+        const newGrid = grid.slice();
+        const Spot = newGrid[col][row];
+        const newNode = {
+          ...Spot,
+          wall: !Spot.wall
+        };
+        newGrid[col][row] = newNode;
+        return newGrid;
+    };
+
+    const logBtn = () => {
+        console.log(Grid)
     }
 
     return (
@@ -185,7 +215,7 @@ function Main() {
                 <button onClick={visualizePath}>Vizualize Algorithm</button>
                 <button onClick={generateGrid}>Generate New Grid</button>
                 <button onClick={clearGrid}>Clear Grid</button>
-                <button onClick={testFunct}>do it</button>
+                <button onClick={logBtn}>Log</button>
             </div>
         </div>
     )
