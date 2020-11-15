@@ -5,7 +5,6 @@ Sytling:
 
 Functionality:
     add tabs for different algorithms using react router
-    Scare grid to screen size
     Add more algorithims:
         -dijkstra
         -maze generate algorithm
@@ -13,5 +12,6 @@ Functionality:
     Make it so mouse down only changes it to the first selected value, so if you place down walls it doesnt remove walls when you go over them. And when you remove walls it doesnt place them
 
 Bugs:
-    Clearing the grid create visual dsync
     Holding the mouse down doest smoothly add walls
+    Scale grid to screen size doest work unless page is reloaded
+    When the visualization is running and the grid is cleared or a new grid is generated the previous animation continues to play (is animating state true/false)(while(animating))

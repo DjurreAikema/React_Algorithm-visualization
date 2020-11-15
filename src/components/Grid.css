@@ -8,13 +8,34 @@
 
 .main__body {
   flex: 0.8;
-  background-color: lightgrey;
 }
 
 .main__footer {
-  padding: 20px;
   flex: 0.2;
-  border-radius: 20px;
+}
+
+.main__footer-button {
+  cursor: pointer;
+
+  font-size: 22px;
+  color: lightgrey;
+
+  padding: 10px 15px;
+  margin: 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+
+  background-color: hsl(122, 39%, 50%);
+  transition: all 0.3s;
+}
+
+.main__footer-button:hover {
+  transform: scale(1.03);
+}
+
+.main__footer-button:active {
+  transform: scale(0.98);
 }
 
 .grid {

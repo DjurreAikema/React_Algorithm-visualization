@@ -1,5 +1,6 @@
 body {
   --slack-color: #3f0f40;
+  --btn-color: hsl(122, 39%, 50%);
   overflow: hidden;
 }
 

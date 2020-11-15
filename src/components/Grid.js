@@ -22,6 +22,7 @@ export default function Grid() {
     const [Diagonals, setDiagonals] = useState(false)
     const [ShortestPath, setShortestPath] = useState([])
     const [VisitedNodes, setVisitedNodes] = useState([])
+    const [Animating, setAnimating] = useState()
 
     //Initialize the grid when the component loads
     useEffect(() => {
@@ -199,15 +200,14 @@ export default function Grid() {
                 </div>
             </div>
             <div className="main__footer">
-                <button onClick={visualizeAlgorithm}>Vizualize Algorithm</button>
-                <button onClick={generateGrid}>Generate New Grid</button>
-                <button onClick={clearGrid}>Clear Grid</button>
+                <button className="main__footer-button" onClick={visualizeAlgorithm}>Vizualize Algorithm</button>
+                <button className="main__footer-button" onClick={generateGrid}>Generate New Grid</button>
+                <button className="main__footer-button" onClick={clearGrid}>Clear Grid</button>
                 <input 
                     type="checkbox" 
                     value={Diagonals}
                     onClick={() => {setDiagonals(!Diagonals)}}
                 />
-                <p>{mainBodysize.width}px / {mainBodysize.height}px</p>
             </div>
     </div>
     )
