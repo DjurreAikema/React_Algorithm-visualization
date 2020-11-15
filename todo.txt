@@ -1,8 +1,17 @@
-Move application to a nicer css format  (slack/standard format)
-make grid based on screen size
-re-generate grip propperly
-add more pathfinding algorithms
-make the colors nicer
+Sytling:
+    better colors
+    Nice buttons
+    better grid spacing
 
-a*
-    make diagonal optional
+Functionality:
+    add tabs for different algorithms using react router
+    Scare grid to screen size
+    Add more algorithims:
+        -dijkstra
+        -maze generate algorithm
+        -sorting algorithms
+    Make it so mouse down only changes it to the first selected value, so if you place down walls it doesnt remove walls when you go over them. And when you remove walls it doesnt place them
+
+Bugs:
+    Clearing the grid create visual dsync
+    Holding the mouse down doest smoothly add walls

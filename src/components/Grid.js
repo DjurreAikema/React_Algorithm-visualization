@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react'
+import useWindowSize from '../hooks/useWindowSize'
 import aStar from '../algorithms/AStar'
 import Node from './Node'
 import "./Grid.css";
 
-//Set the default values for grid generation
-const rows = 15
-const cols = 30
-
-const NODE_START_ROW = 0
-const NODE_START_COL = 0
-const NODE_END_ROW = rows - 1
-const NODE_END_COL = cols - 1
-
 export default function Grid() {
+    const mainBodysize = useWindowSize();
+
+    //Set the default values for grid generation
+    const rows = (isNaN(Math.floor(mainBodysize.height/40))) ? 10 : Math.floor(mainBodysize.height/40)
+    const cols = (isNaN(Math.floor(mainBodysize.width/40))) ? 10 : Math.floor(mainBodysize.width/40)
+
+    const NODE_START_ROW = 0
+    const NODE_START_COL = 0
+    const NODE_END_ROW = rows - 1
+    const NODE_END_COL = cols - 1
+
     //Create the react states
     const [Grid, setGrid] = useState([])
     const [MouseDown, setMouseDown] = useState(false)
@@ -23,7 +26,7 @@ export default function Grid() {
     //Initialize the grid when the component loads
     useEffect(() => {
         initializeGrid()
-    }, [])
+    }, [rows, cols])
 
     //Make the initial grid
     const initializeGrid = () => {
@@ -158,7 +161,7 @@ export default function Grid() {
     return (
         
         <div className="main">
-            <div className="main__body">
+            <div className="main__body" id="main__body">
                 <div className="grid">
                     <div>
                         {Grid.map((row, rowIndex) => {
@@ -196,6 +199,7 @@ export default function Grid() {
                     value={Diagonals}
                     onClick={() => {setDiagonals(!Diagonals)}}
                 />
+                <p>{mainBodysize.width}px / {mainBodysize.height}px</p>
             </div>
     </div>
     )

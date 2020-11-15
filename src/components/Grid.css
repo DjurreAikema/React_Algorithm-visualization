@@ -1,35 +1,24 @@
 .main {
   flex: 0.7;
   flex-grow: 1;
-  /* overflow-y: scroll; */
-  padding-bottom: 150px;
-}
 
-.main__header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  border-bottom: 1px solid lightgray;
-}
-
-.main__headerRight > p {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
+  flex-direction: column;
 }
 
 .main__body {
-  min-height: 95%;
+  flex: 0.8;
+  background-color: lightgrey;
 }
 
 .main__footer {
+  padding: 20px;
+  flex: 0.2;
   border-radius: 20px;
 }
 
 .grid {
-  max-width: 80%;
-  margin: auto;
+  padding: 20px;
 }
 
 .grid__col {
