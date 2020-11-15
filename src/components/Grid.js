@@ -124,7 +124,7 @@ export default function Grid() {
             setTimeout(() => {
                 const node = shortestPathNodes[i]
                 document.getElementById(`node-${node.row}-${node.col}`).className = "node node__shortestPath"
-            }, 15 * i)
+            }, 5 * i)
         }
     }
 
@@ -146,13 +146,21 @@ export default function Grid() {
         for(let i = 0; i <= VisitedNodes.length; i++) {
             if(i === VisitedNodes.length) {
                 for(let i = 1; i < ShortestPath.length - 1; i++) {
-                    const node = ShortestPath[i]
-                    document.getElementById(`node-${node.row}-${node.col}`).className = "node"
+                    const node = Grid[VisitedNodes[i].row][VisitedNodes[i].col]
+                    if(node.wall) {
+                        document.getElementById(`node-${node.row}-${node.col}`).className = "node node__wall"
+                    } else {
+                        document.getElementById(`node-${node.row}-${node.col}`).className = "node"
+                    }
                 }
             } else {
                 if(i !== 0 && i !== VisitedNodes.length-1){
-                    const node = VisitedNodes[i]
-                    document.getElementById(`node-${node.row}-${node.col}`).className = "node"
+                    const node = Grid[VisitedNodes[i].row][VisitedNodes[i].col]
+                    if(node.wall) {
+                        document.getElementById(`node-${node.row}-${node.col}`).className = "node node__wall"
+                    } else {
+                        document.getElementById(`node-${node.row}-${node.col}`).className = "node"
+                    }
                 }
             }
         }
