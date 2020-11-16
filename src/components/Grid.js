@@ -22,7 +22,6 @@ export default function Grid() {
     const [Diagonals, setDiagonals] = useState(false)
     const [ShortestPath, setShortestPath] = useState([])
     const [VisitedNodes, setVisitedNodes] = useState([])
-    const [Animating, setAnimating] = useState()
 
     //Initialize the grid when the component loads
     useEffect(() => {
@@ -172,31 +171,29 @@ export default function Grid() {
         <div className="main">
             <div className="main__body" id="main__body">
                 <div className="grid">
-                    <div>
-                        {Grid.map((row, rowIndex) => {
-                            return (
-                                <div key={rowIndex} className="grid__col">
-                                    {row.map((node, nodeIndex) => {
-                                    const { row, col, start, end, wall } = node;
-                                    return (
-                                        <Node
-                                            key={nodeIndex}
-                                            row={row}
-                                            col={col}
-                                            end={end}
-                                            start={start}
-                                            wall={wall}
-                                            mouseDown={MouseDown}
-                                            onMouseDown={(row, col) => handleMouseDown(row, col)}
-                                            onMouseEnter={(row, col) =>handleMouseEnter(row, col)}
-                                            onMouseUp={() => handleMouseUp()}
-                                        />
-                                    );
-                                    })}
-                            </div>
-                            );
-                        })}
-                    </div>
+                    {Grid.map((row, rowIndex) => {
+                        return (
+                            <div key={rowIndex} className="grid__col">
+                                {row.map((node, nodeIndex) => {
+                                const { row, col, start, end, wall } = node;
+                                return (
+                                    <Node
+                                        key={nodeIndex}
+                                        row={row}
+                                        col={col}
+                                        end={end}
+                                        start={start}
+                                        wall={wall}
+                                        mouseDown={MouseDown}
+                                        onMouseDown={(row, col) => handleMouseDown(row, col)}
+                                        onMouseEnter={(row, col) =>handleMouseEnter(row, col)}
+                                        onMouseUp={() => handleMouseUp()}
+                                    />
+                                );
+                                })}
+                        </div>
+                        );
+                    })}
                 </div>
             </div>
             <div className="main__footer">

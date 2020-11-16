@@ -1,7 +1,7 @@
 Sytling:
     better colors
-    Nice buttons
-    better grid spacing
+    checkbox Sytling
+    red/green glow depending on succes or failure
 
 Functionality:
     add tabs for different algorithms using react router
