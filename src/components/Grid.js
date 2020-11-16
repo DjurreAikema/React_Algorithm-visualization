@@ -8,8 +8,8 @@ export default function Grid() {
     const mainBodysize = useWindowSize();
 
     //Set the default values for grid generation
-    const rows = (isNaN(Math.floor(mainBodysize.height/40))) ? 10 : Math.floor(mainBodysize.height/40)
-    const cols = (isNaN(Math.floor(mainBodysize.width/40))) ? 10 : Math.floor(mainBodysize.width/40)
+    const rows = (isNaN(Math.floor(mainBodysize.height/30))) ? 10 : Math.floor(mainBodysize.height/30)
+    const cols = (isNaN(Math.floor(mainBodysize.width/30))) ? 10 : Math.floor(mainBodysize.width/30)
 
     const NODE_START_ROW = 0
     const NODE_START_COL = 0
