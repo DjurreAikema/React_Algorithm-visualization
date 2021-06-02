@@ -11,10 +11,15 @@ export default function Grid() {
     const rows = (isNaN(Math.floor(mainBodysize.height/30))) ? 10 : Math.floor(mainBodysize.height/30)
     const cols = (isNaN(Math.floor(mainBodysize.width/30))) ? 10 : Math.floor(mainBodysize.width/30)
 
-    const NODE_START_ROW = 0
-    const NODE_START_COL = 0
-    const NODE_END_ROW = rows - 1
-    const NODE_END_COL = cols - 1
+    // const NODE_START_ROW = 0
+    // const NODE_START_COL = 0
+    // const NODE_END_ROW = rows - 1
+    // const NODE_END_COL = cols - 1
+
+    const NODE_START_ROW = Math.floor(rows/2)
+    const NODE_START_COL = 3
+    const NODE_END_ROW = Math.floor(rows/2) - 1
+    const NODE_END_COL = cols - 3
 
     //Create the react states
     const [Grid, setGrid] = useState([])
@@ -51,7 +56,7 @@ export default function Grid() {
             row,
             start: row === NODE_START_ROW && col === NODE_START_COL,
             end: row === NODE_END_ROW && col === NODE_END_COL,
-            wall: (Math.random(1) < 0.2 ? true : false),
+            wall: (Math.random(1) < 0.3 ? true : false),
             g: 0,
             f: 0,
             h: 0,
